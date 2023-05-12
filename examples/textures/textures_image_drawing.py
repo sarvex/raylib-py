@@ -16,12 +16,9 @@ def gui_button(rec: Rectangle, text: str, enabled: bool = True) -> bool:
     size = 10
     text_width: int = measure_text(text, size)
     text_height: int = size
-    
-    if rec.width < text_width:
-        rec.width = text_width
-    if rec.height < text_height:
-        rec.height = text_height
 
+    rec.width = max(rec.width, text_width)
+    rec.height = max(rec.height, text_height)
     if enabled:
         # Update control
         # -------------------------------------------------------------------
@@ -43,11 +40,23 @@ def gui_button(rec: Rectangle, text: str, enabled: bool = True) -> bool:
             # Draw control
             # -------------------------------------------------------------------
             draw_npatch(button_states[state], rec, False, (0, 0), 0., WHITE)
-            draw_text(text, rec.x + (rec.width / 2) - (text_width / 2), rec.y + (rec.height / 2) - (text_height / 2), size, BLACK)
+            draw_text(
+                text,
+                rec.x + (rec.width / 2) - (text_width / 2),
+                rec.y + (rec.height / 2) - (text_height / 2),
+                text_height,
+                BLACK,
+            )
     else:
         draw_npatch(button_states[DISABLED], rec, False, (0, 0), 0., WHITE)
-        draw_text(text, rec.x + (rec.width / 2) - (text_width / 2), rec.y + (rec.height / 2) - (text_height / 2), size, DARKGRAY)
-        # -----------------------------------------------------------------
+        draw_text(
+            text,
+            rec.x + (rec.width / 2) - (text_width / 2),
+            rec.y + (rec.height / 2) - (text_height / 2),
+            text_height,
+            DARKGRAY,
+        )
+            # -----------------------------------------------------------------
 
     return clicked
 

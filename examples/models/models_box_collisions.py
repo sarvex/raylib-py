@@ -37,7 +37,7 @@ def main() -> int:
     while not window_should_close():
         # Update
         # ---------------------------------------------------------------------------------
-        
+
         # Mode player
         if is_key_down(KEY_RIGHT):
             player_position.x += 0.2
@@ -73,11 +73,7 @@ def main() -> int:
         if check_collision_box_sphere(player_bbox, enemy_sphere_pos, enemy_sphere_size):
             collision = True
 
-        if collision:
-            player_color = RED
-        else:
-            player_color = GREEN
-
+        player_color = RED if collision else GREEN
         update_camera(byref(camera))
         # ----------------------------------------------------------------------------------
 
@@ -106,7 +102,7 @@ def main() -> int:
         draw_fps(10, 10)
 
         end_drawing()
-        # ---------------------------------------------------------------------------------
+            # ---------------------------------------------------------------------------------
 
     # De-Initialization
     # -------------------------------------------------------------------------------------

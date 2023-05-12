@@ -29,7 +29,7 @@ def main():
     positions = []
     colors = []
 
-    for i in range(MAX_COLUMNS):
+    for _ in range(MAX_COLUMNS):
         heights.append(rl.get_random_value(1, 12))
         positions.append(rl.Vector3(
                 rl.get_random_value(-15, 15),
@@ -85,7 +85,7 @@ def main():
 
         rl.draw_rectangle(10, 10, 220, 70, rl.fade(rl.SKYBLUE, 0.5))
         rl.draw_rectangle_lines(10, 10, 220, 70, rl.BLUE)
-        
+
         rl.draw_text("First person camera default controls:", 20, 20, 10, rl.BLACK)
         rl.draw_text("- Move with keys: W, A, S, D", 40, 40, 10, rl.DARKGRAY)
         rl.draw_text("- Mouse move to look around", 40, 60, 10, rl.DARKGRAY)
